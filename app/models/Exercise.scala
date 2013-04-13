@@ -1,0 +1,8 @@
+package models
+
+object Exercise {
+	
+	
+	
+	
+}
