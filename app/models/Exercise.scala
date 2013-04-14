@@ -2,7 +2,15 @@ package models
 
 import play.api.libs.json._
 
-case class Exercise(id: Long, name: String) {
+case class Exercise(id: Long, name: String)
+
+object Exercise {
+
+  // Test data
+  val exercises = List(Exercise(1, "bench press"),
+                       Exercise(2, "back squat"))
+
+  def all(): List[Exercise] = exercises
 
   implicit object ExerciseFormat extends Format[Exercise] {
 
@@ -16,14 +24,5 @@ case class Exercise(id: Long, name: String) {
       "name" -> JsString(exercise.name)
     ))
   }
-}
-
-object Exercise {
-
-  // Test data
-  val exercises = List(Exercise(1, "bench press"),
-                       Exercise(2, "back squat"))
-
-  def all(): List[Exercise] = exercises
 
 }
