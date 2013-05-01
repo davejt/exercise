@@ -2,26 +2,26 @@ package models
 
 import play.api.libs.json._
 
-case class Exercise(id: Long, name: String)
+case class Exercise( name: String, category: String )
 
 object Exercise {
 
   // Test data
-  val exercises = List(Exercise(1, "bench press"),
-                       Exercise(2, "back squat"))
+  val exercises = List(Exercise("bench press", "chest"),
+                       Exercise("back squat", "legs"))
 
   def all(): List[Exercise] = exercises
 
   implicit object ExerciseFormat extends Format[Exercise] {
 
     def reads(json: JsValue) = Exercise(
-      (json \ "id").as[Long],
-      (json \ "name").as[String]
+      (json \ "name").as[String],
+      (json \ "category").as[String]
     )
 
     def writes(exercise: Exercise) = JsObject(Seq(
-      "id" -> JsNumber(exercise.id),
-      "name" -> JsString(exercise.name)
+      "name" -> JsString(exercise.name),
+      "category" -> JsString(exercise.category)
     ))
   }
 

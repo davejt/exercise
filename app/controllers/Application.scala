@@ -8,6 +8,6 @@ import play.api.libs.json.Json
 object Application extends Controller {
 
   def index = Action {
-    Ok(Json.toJson(Map("message" -> "API")))
+    Ok(Json.toJson(Map("message" -> "OK")))
   }
 }
