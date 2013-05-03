@@ -1,6 +1,7 @@
 package models
 
 import play.api.libs.json._
+import play.api.libs.functional.syntax._
 
 case class Exercise( name: String, category: String )
 
@@ -12,17 +13,13 @@ object Exercise {
 
   def all(): List[Exercise] = exercises
 
-  implicit object ExerciseFormat extends Format[Exercise] {
+  implicit val exerciseReads: Reads[Exercise] = (
+    (__ \ "name").read[String] and
+    (__ \ "category").read[String]
+  )(Exercise.apply _)
 
-    def reads(json: JsValue) = Exercise(
-      (json \ "name").as[String],
-      (json \ "category").as[String]
-    )
+  implicit val exerciseWrites = Json.writes[Exercise]
 
-    def writes(exercise: Exercise) = JsObject(Seq(
-      "name" -> JsString(exercise.name),
-      "category" -> JsString(exercise.category)
-    ))
-  }
+  // Json.toJson(Exercise("name", "category"))
 
 }
