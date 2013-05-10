@@ -9,7 +9,7 @@ case class Exercise( name: String, category: String )
 
 object Exercise {
 
-  // Test data
+  // Just load the data from disk
   val exercises = Global.exercises
 
   def all(): List[Exercise] = exercises
@@ -21,6 +21,8 @@ object Exercise {
 
   implicit val exerciseWrites = Json.writes[Exercise]
 
-  // Json.toJson(Exercise("name", "category"))
-
+  def searchByCategory(category: String): List[Exercise] = {
+    val all = exercises
+    all.filter { case Exercise(_, c) => c == category }
+  }
 }

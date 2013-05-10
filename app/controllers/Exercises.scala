@@ -9,9 +9,15 @@ import models.Exercise
 
 object Exercises extends Controller {
 
-  def index() = Action {
+  val json = "application/json"
 
-    val json = Json.toJson(Exercise.all)
-    Ok(json).as("application/json")
+  def index() = Action {
+    val result = Json.toJson(Exercise.all)
+    Ok(result).as(json)
+  }
+
+  def category(cat: String) = {
+    val result = Json.toJson(Exercise.searchByCategory(cat))
+    Ok(result).as(json)
   }
 }

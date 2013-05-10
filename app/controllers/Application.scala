@@ -7,7 +7,9 @@ import play.api.libs.json.Json
 
 object Application extends Controller {
 
+  private val json = Map("exercises" -> "/exercises")
+
   def index = Action {
-    Ok(Json.toJson(Map("message" -> "OK")))
+    Ok(Json.toJson(json))
   }
 }
