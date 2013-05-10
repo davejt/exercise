@@ -1,3 +1,5 @@
+package global
+
 import play.api._
 
 import scala.io.Source._

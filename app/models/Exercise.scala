@@ -3,6 +3,8 @@ package models
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 
+import global._
+
 case class Exercise( name: String, category: String )
 
 object Exercise {
@@ -13,7 +15,7 @@ object Exercise {
   def all(): List[Exercise] = exercises
 
   implicit val exerciseReads: Reads[Exercise] = (
-    (__ \ "nam1e").read[String] and
+    (__ \ "name").read[String] and
     (__ \ "category").read[String]
   )(Exercise.apply _)
 
