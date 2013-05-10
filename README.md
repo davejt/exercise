@@ -6,7 +6,7 @@ There is a shortage of good quality APIs for fitness apps so I built this.
 
 You are free to use this API in your own projects
 
-![](https://github.com/owainlewis/exercise/blob/master/public/images/preview.png)
+![](https://raw.github.com/owainlewis/exercise/master/public/images/preview.png)
 
 # All exercises
 
