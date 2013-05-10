@@ -2,37 +2,19 @@
 
 An open API of common bodybuilding and weightlifting exercises.
 
-There is a shortage of good quality APIs for fitness apps. You are free to use this API in your own projects
+There is a shortage of good quality APIs for fitness apps so I built this.
 
-+ Name Exercise name
-+ Type Compound or Simple
-+ Group Chest, Back etc
-+ Equipment Barbell, bodyweight etc
-
+You are free to use this API in your own projects
 
 # All exercises
 
 ```
-GET /api/exercises.json
+http http://localhost:9000/exercises/
 ```
 
 # Search by muscle group
 
-
 ```
-GET /api/group/chest
-```
-
-# Exercises by equipment
-
-```
-GET /api/equipment/bodyweight
+http http://localhost:9000/exercises/category/forearms
 ```
 
-# Example API call
-
-```scala
-
-import exercise._
-
-```
