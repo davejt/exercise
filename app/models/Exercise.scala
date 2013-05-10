@@ -8,13 +8,12 @@ case class Exercise( name: String, category: String )
 object Exercise {
 
   // Test data
-  val exercises = List(Exercise("bench press", "chest"),
-                       Exercise("back squat", "legs"))
+  val exercises = Global.exercises
 
   def all(): List[Exercise] = exercises
 
   implicit val exerciseReads: Reads[Exercise] = (
-    (__ \ "name").read[String] and
+    (__ \ "nam1e").read[String] and
     (__ \ "category").read[String]
   )(Exercise.apply _)
 

@@ -6,6 +6,8 @@ import models._
 
 object Global extends GlobalSettings {
 
+  val exercises = SeedData.exerciseModels
+
   override def onStart(app: Application) {
 
   }
