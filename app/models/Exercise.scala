@@ -21,8 +21,19 @@ object Exercise {
 
   implicit val exerciseWrites = Json.writes[Exercise]
 
-  def searchByCategory(category: String): List[Exercise] = {
-    val all = exercises
-    all.filter { case Exercise(_, c) => c == category }
+  def searchByCategory(category: String): Option[List[Exercise]] = {
+    val result = exercises.filter { case Exercise(_, c) => c == category }
+    result match {
+      case Nil => None
+      case x   => Some(x)
+    }
+  }
+
+  def nameStartsWith(letter: String): Option[List[Exercise]] = {
+    val result = exercises.filter { case Exercise(name, _) => name.startsWith(letter) }
+    result match {
+      case Nil => None
+      case x => Some(x)
+    }
   }
 }

@@ -16,8 +16,20 @@ object Exercises extends Controller {
     Ok(result).as(json)
   }
 
-  def category(cat: String) = {
-    val result = Json.toJson(Exercise.searchByCategory(cat))
-    Ok(result).as(json)
+  /** Search by category */
+  def category(cat: String) = Action {
+    val result: Option[List[Exercise]] = Exercise.searchByCategory(cat)
+    result match {
+      case None    => NotFound("Not found").as(json)
+      case Some(v) => Ok(Json.toJson(v)).as(json)
+    }
+  }
+
+  def startsWith(letter: String) = Action {
+    val result = Exercise.nameStartsWith(letter)
+    result match {
+      case None    => NotFound("Not found").as(json)
+      case Some(v) => Ok(Json.toJson(v)).as(json)
+    }
   }
 }

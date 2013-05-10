@@ -8,6 +8,8 @@ GET     /                           controllers.Application.index
 # Exercises
 
 GET /exercises                     controllers.Exercises.index
+GET /exercises/category/:cat       controllers.Exercises.category(cat: String)
+GET /exercises/:letter             controllers.Exercises.startsWith(letter: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
